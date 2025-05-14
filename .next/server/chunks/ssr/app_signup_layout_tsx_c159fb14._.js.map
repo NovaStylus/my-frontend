@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/project/frontend/app/signup/layout.tsx"],"sourcesContent":["export default function SignupLayout({ children }: { children: React.ReactNode }) {\r\n    return (\r\n      <div className=\"min-h-screen bg-blue-50 flex flex-col\">\r\n        {children}\r\n      </div>\r\n    );\r\n  }\r\n  "],"names":[],"mappings":";;;;;AAAe,SAAS,aAAa,EAAE,QAAQ,EAAiC;IAC5E,qBACE,8OAAC;QAAI,WAAU;kBACZ;;;;;;AAGP","debugId":null}}]
+}

@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://C%3A/Users/ALLEN%20JONAS%20KAMUGISH/Desktop/project/mass/app/chat-support/page.tsx"],"sourcesContent":["\"use client\";\r\n\r\nimport ChatSupportDialog from \"./ChatSupportDialog\";\r\n\r\nexport default function ChatSupportPage() {\r\n  return (\r\n    <div className=\"min-h-screen bg-gray-50\">\r\n      <h1 className=\"text-4xl font-bold text-center py-10\">Chat Support</h1>\r\n      {/* Content for the page */}\r\n      <div className=\"max-w-4xl mx-auto text-center p-6\">\r\n        <p className=\"text-lg text-gray-700\">\r\n          Need help? Our chat support is here to assist you. Start a conversation and get assistance right away!\r\n        </p>\r\n      </div>\r\n\r\n      {/* Chat Support Dialog */}\r\n      <ChatSupportDialog />\r\n    </div>\r\n  );\r\n}\r\n\r\n"],"names":[],"mappings":";;;;;;;;;AAAA;;;AAIe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;;0BACb,8OAAC;gBAAG,WAAU;0BAAuC;;;;;;0BAErD,8OAAC;gBAAI,WAAU;0BACb,cAAA,8OAAC;oBAAE,WAAU;8BAAwB;;;;;;;;;;;0BAMvC,8OAAC;;;;;;;;;;;AAGP","debugId":null}}]
+}

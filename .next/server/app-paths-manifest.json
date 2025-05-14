@@ -1,0 +1,6 @@
+{
+  "/bookappointment/page": "app/bookappointment/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/patientappointments/page": "app/patientappointments/page.js",
+  "/patientdashboard/page": "app/patientdashboard/page.js"
+}
