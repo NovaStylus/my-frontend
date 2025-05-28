@@ -23,7 +23,7 @@ export default function AdminTotalPatients() {
 
       <input
         type="text"
-        placeholder="🔍Search by patient..."
+        placeholder="🔍Search by Patient Name..."
         className="w-full mb-4 p-3 border border-gray-300 rounded-lg"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
@@ -32,7 +32,7 @@ export default function AdminTotalPatients() {
       <table className="w-full bg-white rounded-xl shadow overflow-hidden">
         <thead className="bg-gray-100 text-left">
           <tr>
-            <th className="p-4">Name</th>
+            <th className="p-4">Patient Name</th>
             <th className="p-4">Email</th>
             <th className="p-4">Phone</th>
             <th className="p-4">Appointments</th>

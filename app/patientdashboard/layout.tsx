@@ -3,10 +3,18 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { User, Settings, LogOut, Trash2 } from "lucide-react";
+import { useUserStore } from "@/store/store";
 
 export default function PatientLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const [userName, setUserName] = useState("Patient");
+
+  const clearUser = useUserStore((state) => state.clearUser)
+  const storeUser = useUserStore((state) => state.user)
+
+  console.log(storeUser)
+
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -20,6 +28,18 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+useEffect(() => {
+  const userData = localStorage.getItem("user");
+  if (userData) {
+    const user = JSON.parse(userData);
+    setUserName(user.fullName || "Patient");
+  }
+}, []);
+
+const onLogout = () => {
+  clearUser()
+}
 
   return (
     <main className="flex flex-col min-h-screen bg-blue-50">
@@ -46,7 +66,8 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
             onClick={() => setShowMenu(!showMenu)}
           >
             <User className="w-6 h-6" />
-            <span className="font-medium">Patient</span>
+           <span className="font-medium">{storeUser?.name || "Invalid"}</span>
+
           </div>
         </div>
       </nav>
@@ -74,6 +95,7 @@ export default function PatientLayout({ children }: { children: React.ReactNode 
           <Link
             href="/login"
             className="flex items-center space-x-2 w-full text-left px-4 py-2 hover:bg-gray-100"
+            onClick={onLogout}
           >
             <LogOut className="w-4 h-4" />
             <span>Logout</span>

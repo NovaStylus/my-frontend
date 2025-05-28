@@ -37,7 +37,15 @@ function AdminTotalRevenue() {
             status: "Completed"
         }
     ];
+    // Filter revenues by patient name
     const filteredRevenues = revenues.filter((rev)=>rev.patient.toLowerCase().includes(searchTerm.toLowerCase()));
+    // Sum amounts from filtered revenues
+    // Strip the $ sign and convert to number, then sum
+    const totalAmount = filteredRevenues.reduce((sum, rev)=>{
+        // Remove $ and commas if any, then convert to float
+        const num = parseFloat(rev.amount.replace(/[^0-9.-]+/g, ""));
+        return sum + (isNaN(num) ? 0 : num);
+    }, 0);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -45,18 +53,18 @@ function AdminTotalRevenue() {
                 children: "Total Revenue"
             }, void 0, false, {
                 fileName: "[project]/app/admintotalrevenue/page.tsx",
-                lineNumber: 20,
+                lineNumber: 29,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                 type: "text",
-                placeholder: "🔍Search by patient...",
+                placeholder: "🔍Search by Patient Name...",
                 className: "w-full mb-4 p-3 border border-gray-300 rounded-lg",
                 value: searchTerm,
                 onChange: (e)=>setSearchTerm(e.target.value)
             }, void 0, false, {
                 fileName: "[project]/app/admintotalrevenue/page.tsx",
-                lineNumber: 24,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -71,15 +79,15 @@ function AdminTotalRevenue() {
                                     children: "Date"
                                 }, void 0, false, {
                                     fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                    lineNumber: 35,
+                                    lineNumber: 42,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                     className: "p-4",
-                                    children: "Patient"
+                                    children: "Patient Name"
                                 }, void 0, false, {
                                     fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                    lineNumber: 36,
+                                    lineNumber: 43,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -87,7 +95,7 @@ function AdminTotalRevenue() {
                                     children: "Amount"
                                 }, void 0, false, {
                                     fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                    lineNumber: 37,
+                                    lineNumber: 44,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -95,18 +103,18 @@ function AdminTotalRevenue() {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                    lineNumber: 38,
+                                    lineNumber: 45,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/admintotalrevenue/page.tsx",
-                            lineNumber: 34,
+                            lineNumber: 41,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                        lineNumber: 33,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -118,7 +126,7 @@ function AdminTotalRevenue() {
                                         children: rev.date
                                     }, void 0, false, {
                                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                        lineNumber: 44,
+                                        lineNumber: 51,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -126,7 +134,7 @@ function AdminTotalRevenue() {
                                         children: rev.patient
                                     }, void 0, false, {
                                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                        lineNumber: 45,
+                                        lineNumber: 52,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -134,7 +142,7 @@ function AdminTotalRevenue() {
                                         children: rev.amount
                                     }, void 0, false, {
                                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                        lineNumber: 46,
+                                        lineNumber: 53,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -144,35 +152,77 @@ function AdminTotalRevenue() {
                                             children: rev.status
                                         }, void 0, false, {
                                             fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                            lineNumber: 48,
+                                            lineNumber: 55,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                        lineNumber: 47,
+                                        lineNumber: 54,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/app/admintotalrevenue/page.tsx",
-                                lineNumber: 43,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/admintotalrevenue/page.tsx",
-                        lineNumber: 41,
+                        lineNumber: 48,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tfoot", {
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tr", {
+                            className: "bg-gray-100 font-semibold",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                    className: "p-4",
+                                    colSpan: 2,
+                                    children: "Total"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/admintotalrevenue/page.tsx",
+                                    lineNumber: 69,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                    className: "p-4",
+                                    children: [
+                                        "$",
+                                        totalAmount.toFixed(2)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/admintotalrevenue/page.tsx",
+                                    lineNumber: 72,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
+                                    className: "p-4"
+                                }, void 0, false, {
+                                    fileName: "[project]/app/admintotalrevenue/page.tsx",
+                                    lineNumber: 73,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/admintotalrevenue/page.tsx",
+                            lineNumber: 68,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/admintotalrevenue/page.tsx",
+                        lineNumber: 67,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/admintotalrevenue/page.tsx",
-                lineNumber: 32,
+                lineNumber: 39,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/admintotalrevenue/page.tsx",
-        lineNumber: 19,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }

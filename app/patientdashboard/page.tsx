@@ -16,6 +16,9 @@ export default function PatientDashboardCards() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState<string[]>([]);
 
+
+  
+
   const handleSend = () => {
     if (message.trim()) {
       setMessages((prev) => [...prev, message]);

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "@/store/store";
 
 export default function BookAppointmentPage() {
   const [department, setDepartment] = useState("");
@@ -11,11 +12,12 @@ export default function BookAppointmentPage() {
   const [amount, setAmount] = useState("");
 
   const router = useRouter();
+  const storeUser = useUserStore((state) => state.user);
 
   const departments: { [key: string]: number } = {
     "General Medicine": 0,
-    "Dermatology": 2000,
-    "Neurology": 3000,
+    "Dermatology": 500,
+    "Neurology": 1000,
   };
 
   const handleDepartmentChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -28,36 +30,52 @@ export default function BookAppointmentPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!department || !appointment_date || !appointment_time|| (parseInt(amount) > 0 && !payment_method)) {
+    if (
+      !department ||
+      !appointment_date ||
+      !appointment_time ||
+      (parseInt(amount) > 0 && !payment_method)
+    ) {
       alert("Please fill in all required fields.");
       return;
     }
 
     const isoString = `${appointment_date}T${appointment_time}:00`;
-
     const appointmentDateTime = new Date(isoString);
 
-    const response = await fetch("http://localhost:5000/api/bookappointment/book", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        department: 6,
-        appointment_date: appointmentDateTime ,
-        appointment_time: appointmentDateTime,
-        amount,
-        payment_method,
-        patient_id: 5, // Replace with real ID when available
-      }),
-    });
-    
-    if (response.ok) {
-      const data = await response.json();
-      router.push(
-        `/patientappointments`
-      );
-    } else {
-      const err = await response.json();
-      alert(err.error || "Booking failed");
+    try {
+      const response = await fetch("http://localhost:5000/api/bookappointment/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          department: department === "General Medicine" ? 1 : department === "Dermatology" ? 2 : 3,
+          appointment_date: appointmentDateTime,
+          appointment_time: appointmentDateTime,
+          amount,
+          payment_method,
+          patient_id: storeUser?.id,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        router.push("/patientappointments");
+      } else {
+        const err = await response.json();
+        if (err.error === "You already have an appointment at this time. Please choose a different time.") {
+          alert("You already have an appointment at this time. Please reschedule.");
+        } else if (
+          err.error ===
+          "This time slot in the selected department is already booked. Please choose a different time."
+        ) {
+          alert("Selected time slot is already booked in this department. Please choose another.");
+        } else {
+          alert(err.error || "Booking failed");
+        }
+      }
+    } catch (error) {
+      console.error("Booking Error:", error);
+      alert("Something went wrong while booking the appointment.");
     }
   };
 

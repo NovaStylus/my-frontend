@@ -20,26 +20,12 @@ function ReceptionistDashboard() {
         {
             id: 1,
             department: "General Medicine",
-            doctor: "Dr. White",
-            patient: "John Doe",
-            email: "john.doe@example.com",
+            name: "Man Bijo",
             phone: "0765432134",
             payment: "No Fee",
             date: "Apr 18, 2025",
             time: "09:00 AM",
             status: "Pending"
-        },
-        {
-            id: 2,
-            department: "Neurology",
-            doctor: "Dr. Smith",
-            patient: "Jane Smith",
-            email: "jane.smith@example.com",
-            phone: "0765434434",
-            payment: "5000TSH",
-            date: "Apr 18, 2025",
-            time: "10:00 AM",
-            status: "Checked-In"
         }
     ]);
     const [searchQuery, setSearchQuery] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
@@ -61,7 +47,7 @@ function ReceptionistDashboard() {
                 return "bg-gray-300 text-black";
         }
     };
-    const filteredAppointments = appointments.filter((app)=>app.patient.toLowerCase().includes(searchQuery.toLowerCase()) || app.department.toLowerCase().includes(searchQuery.toLowerCase()));
+    const filteredAppointments = appointments.filter((app)=>app.name.toLowerCase().includes(searchQuery.toLowerCase()) || app.department.toLowerCase().includes(searchQuery.toLowerCase()));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -69,18 +55,18 @@ function ReceptionistDashboard() {
                 children: "Appointments"
             }, void 0, false, {
                 fileName: "[project]/app/receptionistappointments/page.tsx",
-                lineNumber: 74,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                 type: "text",
-                placeholder: "🔍Search by Patient or Department",
+                placeholder: "🔍Search by Patient Name or Department",
                 value: searchQuery,
                 onChange: (e)=>setSearchQuery(e.target.value),
                 className: "mb-4 p-2 border border-gray-300 rounded-lg w-full"
             }, void 0, false, {
                 fileName: "[project]/app/receptionistappointments/page.tsx",
-                lineNumber: 77,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -95,23 +81,15 @@ function ReceptionistDashboard() {
                                     children: "Department"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 88,
+                                    lineNumber: 76,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                     className: "p-4",
-                                    children: "Patient"
+                                    children: "Name"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 89,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    className: "p-4",
-                                    children: "Email"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 77,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -119,7 +97,7 @@ function ReceptionistDashboard() {
                                     children: "Phone"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 79,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -127,7 +105,7 @@ function ReceptionistDashboard() {
                                     children: "Payment"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 80,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -135,7 +113,7 @@ function ReceptionistDashboard() {
                                     children: "Date"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 93,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -143,7 +121,7 @@ function ReceptionistDashboard() {
                                     children: "Time"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 94,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -151,18 +129,18 @@ function ReceptionistDashboard() {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/app/receptionistappointments/page.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 83,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/receptionistappointments/page.tsx",
-                            lineNumber: 87,
+                            lineNumber: 75,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                        lineNumber: 86,
+                        lineNumber: 74,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -174,23 +152,15 @@ function ReceptionistDashboard() {
                                         children: app.department
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 101,
+                                        lineNumber: 89,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         className: "p-4",
-                                        children: app.patient
+                                        children: app.name
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 102,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        className: "p-4",
-                                        children: app.email
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 90,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -198,7 +168,7 @@ function ReceptionistDashboard() {
                                         children: app.phone
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 92,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -206,7 +176,7 @@ function ReceptionistDashboard() {
                                         children: app.payment
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 93,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -214,7 +184,7 @@ function ReceptionistDashboard() {
                                         children: app.date
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 94,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -222,7 +192,7 @@ function ReceptionistDashboard() {
                                         children: app.time
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 95,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -233,39 +203,39 @@ function ReceptionistDashboard() {
                                             children: app.status
                                         }, void 0, false, {
                                             fileName: "[project]/app/receptionistappointments/page.tsx",
-                                            lineNumber: 109,
+                                            lineNumber: 97,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                                        lineNumber: 108,
+                                        lineNumber: 96,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, app.id, true, {
                                 fileName: "[project]/app/receptionistappointments/page.tsx",
-                                lineNumber: 100,
+                                lineNumber: 88,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/receptionistappointments/page.tsx",
-                        lineNumber: 98,
+                        lineNumber: 86,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/receptionistappointments/page.tsx",
-                lineNumber: 85,
+                lineNumber: 73,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/receptionistappointments/page.tsx",
-        lineNumber: 73,
+        lineNumber: 61,
         columnNumber: 5
     }, this);
 }
-_s(ReceptionistDashboard, "UuQmF8khPpfXyJWZExQCBcu46YM=");
+_s(ReceptionistDashboard, "xX/jhkfepm3ZdH5ltBN5PhtSNyk=");
 _c = ReceptionistDashboard;
 var _c;
 __turbopack_context__.k.register(_c, "ReceptionistDashboard");

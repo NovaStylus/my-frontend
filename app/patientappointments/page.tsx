@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "@/store/store";
 
 export default function MyAppointmentsPage() {
   const [appointments, setAppointments] = useState([]);
@@ -9,13 +10,24 @@ export default function MyAppointmentsPage() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [selectedAppointmentId, setSelectedAppointmentId] = useState(null);
 
+  const storedUser = useUserStore((store) => store.user)
+  console.log('outside useeffect',storedUser)
+
   const router = useRouter();
 
   useEffect(() => {
     // Fetch appointments from backend
     const fetchAppointments = async () => {
+
+    if (!storedUser) {
+      //console.log(storedUser)
+      return;
+    }
+
+    console.log('inside useeffect', storedUser.id)
+     
       try {
-        const res = await fetch("http://localhost:5000/api/bookappointment/book"); // replace with your actual API
+        const res = await fetch(`http://localhost:5000/api/bookappointment/book/${storedUser.id}`); // replace with your actual API
         const data = await res.json();
         setAppointments(data);
       } catch (err) {
@@ -24,7 +36,7 @@ export default function MyAppointmentsPage() {
     };
 
     fetchAppointments();
-  }, []);
+  }, [storedUser]);
 
   const handleRescheduleClick = (id: any) => {
     setSelectedAppointmentId(id);
@@ -80,7 +92,7 @@ export default function MyAppointmentsPage() {
               </td>
             </tr>
           ) : (
-            appointments.map((appointment: any) => (
+            appointments?.map((appointment: any) => (
               <tr key={appointment.id} className="border-t">
                 <td className="p-4">{appointment.department?.name || "General Medicine"}</td>
                 <td className="p-4">

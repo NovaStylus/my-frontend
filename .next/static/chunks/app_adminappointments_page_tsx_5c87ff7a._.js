@@ -21,34 +21,11 @@ function AdminAppointmentsPage() {
         {
             id: 1,
             department: "Cardiology",
-            patient: "John Doe",
-            email: "john@example.com",
+            patientname: "John Doe",
             phone: "0700000001",
             payment: "Paid",
             date: "Apr 18, 2025",
             time: "09:00 AM",
-            status: "Pending"
-        },
-        {
-            id: 2,
-            department: "Neurology",
-            patient: "Jane Smith",
-            email: "jane@example.com",
-            phone: "0700000002",
-            payment: "Pending",
-            date: "Apr 18, 2025",
-            time: "10:30 AM",
-            status: "Pending"
-        },
-        {
-            id: 3,
-            department: "Pediatrics",
-            patient: "Tom Johnson",
-            email: "tomj@example.com",
-            phone: "0700000003",
-            payment: "Paid",
-            date: "Apr 18, 2025",
-            time: "11:15 AM",
             status: "Pending"
         }
     ]);
@@ -68,7 +45,7 @@ function AdminAppointmentsPage() {
                 return "bg-gray-300 text-black";
         }
     };
-    const filteredAppointments = appointments.filter((app)=>app.patient.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredAppointments = appointments.filter((app)=>app.patientname.toLowerCase().includes(searchTerm.toLowerCase()));
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -76,18 +53,18 @@ function AdminAppointmentsPage() {
                 children: "Appointments"
             }, void 0, false, {
                 fileName: "[project]/app/adminappointments/page.tsx",
-                lineNumber: 74,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                 type: "text",
-                placeholder: "🔍 Search by patient...",
+                placeholder: "🔍 Search by Patient Name...",
                 className: "w-full mb-4 p-3 border border-gray-300 rounded-lg",
                 value: searchTerm,
                 onChange: (e)=>setSearchTerm(e.target.value)
             }, void 0, false, {
                 fileName: "[project]/app/adminappointments/page.tsx",
-                lineNumber: 76,
+                lineNumber: 54,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("table", {
@@ -102,23 +79,15 @@ function AdminAppointmentsPage() {
                                     children: "Department"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 87,
+                                    lineNumber: 65,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
                                     className: "p-4",
-                                    children: "Patient"
+                                    children: "Patient Name"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 88,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
-                                    className: "p-4",
-                                    children: "Email"
-                                }, void 0, false, {
-                                    fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 66,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -126,7 +95,7 @@ function AdminAppointmentsPage() {
                                     children: "Phone"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 90,
+                                    lineNumber: 68,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -134,7 +103,7 @@ function AdminAppointmentsPage() {
                                     children: "Payment"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 91,
+                                    lineNumber: 69,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -142,7 +111,7 @@ function AdminAppointmentsPage() {
                                     children: "Date"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 70,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -150,7 +119,7 @@ function AdminAppointmentsPage() {
                                     children: "Time"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 93,
+                                    lineNumber: 71,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("th", {
@@ -158,18 +127,18 @@ function AdminAppointmentsPage() {
                                     children: "Status"
                                 }, void 0, false, {
                                     fileName: "[project]/app/adminappointments/page.tsx",
-                                    lineNumber: 94,
+                                    lineNumber: 72,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/adminappointments/page.tsx",
-                            lineNumber: 86,
+                            lineNumber: 64,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/adminappointments/page.tsx",
-                        lineNumber: 85,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("tbody", {
@@ -181,23 +150,15 @@ function AdminAppointmentsPage() {
                                         children: app.department
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 100,
+                                        lineNumber: 78,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
                                         className: "p-4",
-                                        children: app.patient
+                                        children: app.patientname
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 101,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
-                                        className: "p-4",
-                                        children: app.email
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 102,
+                                        lineNumber: 79,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -205,7 +166,7 @@ function AdminAppointmentsPage() {
                                         children: app.phone
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 103,
+                                        lineNumber: 81,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -213,7 +174,7 @@ function AdminAppointmentsPage() {
                                         children: app.payment
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 104,
+                                        lineNumber: 82,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -221,7 +182,7 @@ function AdminAppointmentsPage() {
                                         children: app.date
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 105,
+                                        lineNumber: 83,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -229,7 +190,7 @@ function AdminAppointmentsPage() {
                                         children: app.time
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 106,
+                                        lineNumber: 84,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("td", {
@@ -240,39 +201,39 @@ function AdminAppointmentsPage() {
                                             children: app.status
                                         }, void 0, false, {
                                             fileName: "[project]/app/adminappointments/page.tsx",
-                                            lineNumber: 108,
+                                            lineNumber: 86,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/adminappointments/page.tsx",
-                                        lineNumber: 107,
+                                        lineNumber: 85,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, app.id, true, {
                                 fileName: "[project]/app/adminappointments/page.tsx",
-                                lineNumber: 99,
+                                lineNumber: 77,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/adminappointments/page.tsx",
-                        lineNumber: 97,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/adminappointments/page.tsx",
-                lineNumber: 84,
+                lineNumber: 62,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/adminappointments/page.tsx",
-        lineNumber: 73,
+        lineNumber: 51,
         columnNumber: 5
     }, this);
 }
-_s(AdminAppointmentsPage, "8xLBEayVO/FuXwDlQOgvrq/lBos=");
+_s(AdminAppointmentsPage, "3TqDqg0NyPNcyABfK+JroEx60bc=");
 _c = AdminAppointmentsPage;
 var _c;
 __turbopack_context__.k.register(_c, "AdminAppointmentsPage");

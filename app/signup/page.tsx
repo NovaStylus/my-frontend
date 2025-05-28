@@ -17,6 +17,7 @@ export default function SignUpPage() {
     email: "",
     password: "",
     confirmPassword: "",
+    phone: "",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -45,7 +46,7 @@ export default function SignUpPage() {
       return "Password must contain at least one special character.";
     }
     if (!letters.test(password)) {
-      return "Password must contain at least one letter (uppercase or lowercase).";
+      return "Password must contain at least one letter.";
     }
     return "";
   };
@@ -56,10 +57,14 @@ export default function SignUpPage() {
   };
 
   const validateConfirmPassword = () => {
-    if (form.password !== form.confirmPassword) {
-      return "Passwords do not match.";
-    }
-    return "";
+    return form.password !== form.confirmPassword ? "Passwords do not match." : "";
+  };
+
+  const validatePhone = (phone: string) => {
+    const regex = /^[67]\d{8}$/;
+    return regex.test(phone)
+      ? ""
+      : "Enter a valid phone number.";
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -67,49 +72,55 @@ export default function SignUpPage() {
     const passwordError = validatePassword(form.password);
     const emailError = validateEmail(form.email);
     const confirmPasswordError = validateConfirmPassword();
+    const phoneError = validatePhone(form.phone);
 
-    if (passwordError || emailError || confirmPasswordError) {
+    if (passwordError || emailError || confirmPasswordError || phoneError) {
       setErrors({
         email: emailError,
         password: passwordError,
         confirmPassword: confirmPasswordError,
+        phone: phoneError,
       });
-    } else {
-      setErrors({ email: "", password: "", confirmPassword: "" });
+      return;
+    }
 
-      // Send data to the backend
-      try {
-        const response = await fetch('http://localhost:5000/api/signup', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(form),
-        });
+    setErrors({ email: "", password: "", confirmPassword: "", phone: "" });
 
-        const result = await response.json();
+    try {
+      const formattedForm = {
+        ...form,
+        phone: "+255" + form.phone,
+      };
 
-        if (response.ok) {
-          console.log("Signup successful:", result);
-          // Handle success (e.g., redirect or show success message)
-          window.location.href = '/login'; // Redirect to login after successful signup
-        } else {
-          console.error("Signup failed:", result);
-          // Handle error (e.g., show error message)
-          setErrors({
-            email: result.error || "An error occurred. Please try again.",
-            password: "",
-            confirmPassword: "",
-          });
-        }
-      } catch (error) {
-        console.error("Error during signup:", error);
+      const response = await fetch("http://localhost:5000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedForm),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        console.log("Signup successful:", result);
+        window.location.href = "/login";
+      } else {
         setErrors({
-          email: "Failed to connect to server.",
+          email: result.error || "An error occurred. Please try again.",
           password: "",
           confirmPassword: "",
+          phone: "",
         });
       }
+    } catch (error) {
+      console.error("Error during signup:", error);
+      setErrors({
+        email: "Failed to connect to server.",
+        password: "",
+        confirmPassword: "",
+        phone: "",
+      });
     }
   };
 
@@ -145,7 +156,7 @@ export default function SignUpPage() {
           <form onSubmit={handleSubmit} className="space-y-5">
             <FormInput label="Full Name" name="fullName" value={form.fullName} onChange={handleChange} />
             <FormInput label="Email" name="email" type="email" value={form.email} onChange={handleChange} error={errors.email} />
-            <FormInput label="Phone Number" name="phone" type="tel" value={form.phone} onChange={handleChange} />
+            <FormPhoneNumber label="Phone Number" name="phone" value={form.phone} onChange={handleChange} error={errors.phone} />
             <FormInput
               label="Password"
               name="password"
@@ -212,13 +223,51 @@ function FormInput({
         required
       />
       {showToggle && (
-        <span
-          className="absolute right-3 top-[43px] cursor-pointer text-gray-500"
-          onClick={toggleVisibility}
-        >
+        <span className="absolute right-3 top-[43px] cursor-pointer text-gray-500" onClick={toggleVisibility}>
           {visible ? <EyeOff size={20} /> : <Eye size={20} />}
         </span>
       )}
+      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+    </div>
+  );
+}
+
+function FormPhoneNumber({
+  label,
+  name,
+  value,
+  onChange,
+  error = "",
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: any;
+  error?: string;
+}) {
+  return (
+    <div>
+      <label className="block text-gray-700 font-medium mb-2">{label}</label>
+      <div className="flex items-center border border-gray-300 rounded-lg overflow-hidden">
+        <div className="flex items-center px-3 bg-gray-100">
+   
+          <span className="text-gray-700">+255</span>
+        </div>
+        <input
+          type="tel"
+          name={name}
+          value={value}
+          onChange={(e) => {
+            const raw = e.target.value.replace(/\D/g, "");
+            if (raw.length <= 9) {
+              onChange({ target: { name, value: raw } });
+            }
+          }}
+         
+          className="flex-1 p-3 focus:outline-none"
+          required
+        />
+      </div>
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
   );

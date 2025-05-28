@@ -1,6 +1,17 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/admindashboard/page": "app/admindashboard/page.js",
+  "/admindepartments/page": "app/admindepartments/page.js",
+  "/admintopdepartment/page": "app/admintopdepartment/page.js",
   "/bookappointment/page": "app/bookappointment/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/login/page": "app/login/page.js",
+  "/page": "app/page.js",
   "/patientappointments/page": "app/patientappointments/page.js",
-  "/patientdashboard/page": "app/patientdashboard/page.js"
+  "/patientdashboard/page": "app/patientdashboard/page.js",
+  "/patientpayments/page": "app/patientpayments/page.js",
+  "/receptionistdashboard/page": "app/receptionistdashboard/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/update-details/page": "app/update-details/page.js",
+  "/updaterdetails/page": "app/updaterdetails/page.js"
 }

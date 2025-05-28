@@ -2,12 +2,18 @@
 
 import Link from "next/link";
 import { ArrowRightCircle } from "lucide-react";
+import { useUserStore } from "@/store/store";
 
 export default function AdminAppointmentsLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  const storedUser = useUserStore((state) => state.user)
+
+  console.log('From layout', storedUser)
+
   return (
     <main className="flex flex-col min-h-screen bg-blue-50">
       {/* Navbar */}

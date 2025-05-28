@@ -7,27 +7,15 @@ export default function ReceptionistDashboard() {
     {
       id: 1,
       department: "General Medicine",
-      doctor: "Dr. White",
-      patient: "John Doe",
-      email: "john.doe@example.com",
+   
+      patientname: "Man Bijo",
       phone: "0765432134",
       payment: "No Fee",
       date: "Apr 18, 2025",
       time: "09:00 AM",
       status: "Pending",
     },
-    {
-      id: 2,
-      department: "Neurology",
-      doctor: "Dr. Smith",
-      patient: "Jane Smith",
-      email: "jane.smith@example.com",
-      phone: "0765434434",
-      payment: "5000TSH",
-      date: "Apr 18, 2025",
-      time: "10:00 AM",
-      status: "Checked-In",
-    },
+
   ]);
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -65,7 +53,7 @@ export default function ReceptionistDashboard() {
 
   const filteredAppointments = appointments.filter(
     (app) =>
-      app.patient.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      app.patientname.toLowerCase().includes(searchQuery.toLowerCase()) ||
       app.department.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
@@ -76,7 +64,7 @@ export default function ReceptionistDashboard() {
       {/* Search Bar */}
       <input
         type="text"
-        placeholder="🔍Search by Patient or Department"
+        placeholder="🔍Search by Patient Name or Department"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         className="mb-4 p-2 border border-gray-300 rounded-lg w-full"
@@ -86,8 +74,8 @@ export default function ReceptionistDashboard() {
         <thead className="bg-gray-100 text-left">
           <tr>
             <th className="p-4">Department</th>
-            <th className="p-4">Patient</th>
-            <th className="p-4">Email</th>
+            <th className="p-4">Patient Name</th>
+          
             <th className="p-4">Phone</th>
             <th className="p-4">Payment</th>
             <th className="p-4">Date</th>
@@ -99,8 +87,8 @@ export default function ReceptionistDashboard() {
           {filteredAppointments.map((app) => (
             <tr key={app.id} className="border-b">
               <td className="p-4">{app.department}</td>
-              <td className="p-4">{app.patient}</td>
-              <td className="p-4">{app.email}</td>
+              <td className="p-4">{app.patientname}</td>
+              
               <td className="p-4">{app.phone}</td>
               <td className="p-4">{app.payment}</td>
               <td className="p-4">{app.date}</td>

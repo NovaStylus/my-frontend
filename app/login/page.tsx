@@ -4,9 +4,13 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useUserStore } from "@/store/store";
 
 export default function LoginPage() {
   const router = useRouter();
+
+  const setUser = useUserStore((state) => state.setUser)
+  const storeUser = useUserStore((state) => state.user)
 
   const [form, setForm] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
@@ -50,13 +54,17 @@ export default function LoginPage() {
       });
 
       const data = await res.json();
+      
 
       if (res.ok) {
         localStorage.setItem("user", JSON.stringify(data.user));
         const { email } = data.user;
+        setUser(data.user)
 
-        if (email === "muganyizi05@gmail.com") router.push("/admindashboard");
-        else if (email === "irenekokujona@gmail.com") router.push("/receptionistdashboard");
+        alert("success")
+
+        if (data.user?.role === "admin") router.push("/admindashboard");
+        else if (data.user?.role === "receptionist") router.push("/receptionistdashboard");
         else router.push("/patientdashboard");
       } else {
         setErrors({ ...errors, password: data.error || "Login failed" });

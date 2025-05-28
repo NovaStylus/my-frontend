@@ -3,10 +3,13 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { User, Settings, LogOut,Trash2 } from "lucide-react";
+import { useUserStore } from "@/store/store";
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const storedUser = useUserStore((state) => state.user)
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -48,7 +51,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="flex items-center space-x-2 cursor-pointer"
             >
               <User className="w-6 h-6" />
-              <span className="font-medium">Admin</span>
+              <span className="font-medium">{storedUser?.name}</span>
             </div>
 
             {showMenu && (
