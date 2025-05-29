@@ -1,4 +1,5 @@
 "use client";
+import toast from "react-hot-toast";
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -63,19 +64,19 @@ export default function BookAppointmentPage() {
       } else {
         const err = await response.json();
         if (err.error === "You already have an appointment at this time. Please choose a different time.") {
-          alert("You already have an appointment at this time. Please reschedule.");
+          toast.success("You already have an appointment at this time. Please reschedule.");
         } else if (
           err.error ===
           "This time slot in the selected department is already booked. Please choose a different time."
         ) {
-          alert("Selected time slot is already booked in this department. Please choose another.");
+          toast.success("Selected time slot is already booked in this department. Please choose another.");
         } else {
-          alert(err.error || "Booking failed");
+          toast.success(err.error || "Booking failed");
         }
       }
     } catch (error) {
       console.error("Booking Error:", error);
-      alert("Something went wrong while booking the appointment.");
+      toast.success("Something went wrong while booking the appointment.");
     }
   };
 

@@ -1,5 +1,5 @@
 "use client";
-
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
@@ -63,7 +63,7 @@ export default function MyAppointmentsPage() {
       setAppointments((prev) =>
         prev.filter((appt: any) => appt.id !== selectedAppointmentId)
       );
-      alert("Appointment Cancelled");
+      toast.success("Appointment Cancelled");
     } catch (err) {
       console.error("Cancel failed:", err);
     }

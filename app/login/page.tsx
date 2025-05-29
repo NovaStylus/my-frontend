@@ -1,10 +1,12 @@
 "use client";
+import toast from "react-hot-toast";
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useUserStore } from "@/store/store";
+
 
 export default function LoginPage() {
   const router = useRouter();
@@ -61,7 +63,7 @@ export default function LoginPage() {
         const { email } = data.user;
         setUser(data.user)
 
-        alert("success")
+          toast.success("Login successful!");
 
         if (data.user?.role === "admin") router.push("/admindashboard");
         else if (data.user?.role === "receptionist") router.push("/receptionistdashboard");
